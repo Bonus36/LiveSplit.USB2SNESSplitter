@@ -90,9 +90,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SuperMetroid.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="alttp-swordup.json" />
+    <None Include="SuperMetroid.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="websocket-sharp.dll" />
