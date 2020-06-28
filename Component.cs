@@ -53,6 +53,7 @@ namespace LiveSplit.UI.Components
 
         class Game
         {
+            public string game { get; set; }
             public string name { get; set; }
             public Autostart autostart { get; set; }
             public Dictionary<String, String> alias { get; set; }
@@ -202,6 +203,12 @@ namespace LiveSplit.UI.Components
             {
                 var jsonStr = File.ReadAllText(_settings.ConfigFile);
                 _game = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Game>(jsonStr);
+                // The code for this component references a field named "name", but the JSON calls it "game"
+                // This is a hack fix to allow for loading older JSON while still populating the "name" property.
+                if (_game != null && _game.name == null)
+                {
+                    _game.name = _game.game;
+                }
             }
             catch (Exception e)
             {
